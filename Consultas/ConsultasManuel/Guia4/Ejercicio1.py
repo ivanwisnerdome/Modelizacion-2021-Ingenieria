@@ -81,13 +81,13 @@ v = lambda a1,a2,a3,a4,x: a1*x**3 + a2*x**2 + a3*x + a4
 
 for j in range(3):
 	Utot[:,j] = Utot[:,j]/Normaliz[j]
-	plt.plot(np.linspace(0,1,nodos),Utot[V2,j],'k')
-	#for i in range(elem):
-	#	A1 = 2/L**3*(Utot[2*i,j] - Utot[2*(i + 1),j]) + 1/L**2*(Utot[2*i + 1,j] + Utot[2*(i + 1) + 1,j])
-	#	A2 = - 3/L**2*(Utot[2*i,j] - Utot[2*(i + 1),j]) - 1/L*(2*Utot[2*i + 1,j] + Utot[2*(i + 1) + 1,j])
-	#	A3 = Utot[2*i + 1,j]
-	#	A4 = Utot[2*i,j]
-	#	plt.plot(np.linspace(i*L, (i+1)*L, 25), v(A1, A2, A3, A4, np.linspace(0, L, 25)), 'k')
+	#plt.plot(np.linspace(0,1,nodos),Utot[V2,j],'k')
+	for i in range(elem):
+		A1 = 2/L**3*(Utot[2*i,j] - Utot[2*(i + 1),j]) + 1/L**2*(Utot[2*i + 1,j] + Utot[2*(i + 1) + 1,j])
+		A2 = - 3/L**2*(Utot[2*i,j] - Utot[2*(i + 1),j]) - 1/L*(2*Utot[2*i + 1,j] + Utot[2*(i + 1) + 1,j])
+		A3 = Utot[2*i + 1,j]
+		A4 = Utot[2*i,j]
+		plt.plot(np.linspace(i*L, (i+1)*L, 25), v(A1, A2, A3, A4, np.linspace(0, L, 25)), 'k')
 plt.xlabel("Distancia", fontsize = 10)
 plt.ylabel("Amplitud", fontsize = 10)
 plt.show()
