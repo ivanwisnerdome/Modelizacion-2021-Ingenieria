@@ -38,9 +38,9 @@ for i in range(elem):
 	MatCap = CalorEsp*Densidad*L/6*MatCap
 	
 	KSub = (Conductividad/L)*np.array([
-										[1,-1],
-										[-1,1]
-									])
+                        [1,-1],
+                        [-1,1]
+                ])
 
 	I = np.linspace(N[0], N[1], 2).astype(int)
 	KGlobal[np.ix_(I, I)] += KSub
@@ -57,6 +57,9 @@ Flujo = np.zeros(nodos)
 while Contador < 10000:
 
 	Contador += 1
+        #MDF-COMMENT ojo con los punteros ! 
+        #MDF-COMMENT lo mejor es hacer una lista e ir appendeando los Ts, 
+        #MDF-COMMENT e indexar la dirección 0 por tiempo.
 	Tb = T
 
 	T[R] = np.linalg.solve(CapTot[np.ix_(R, R)], np.dot(CapTot[np.ix_(R, R)], T[R]) -\
@@ -64,7 +67,11 @@ while Contador < 10000:
 
 	Flujo = np.dot(CapTot, (T - Tb)/Intervalot) + np.dot(KGlobal,Tb)
 
-	Error = abs((abs(Flujo[0])-abs(Flujo[-1])))
+        #MDF-COMMENT si estas midiendo un error, te conviene normalizarlo 
+        #MDF-COMMENT con el flujo ultimo  y el dt !
+	#MDF-COMMENT Error = abs((abs(Flujo[0])-abs(Flujo[-1])))
+	Error = abs((abs(Flujo[0])-abs(Flujo[-1]))/(Intervalot*Flujo[-1]))
+        
 	#plt.plot(Contador, Error, 'ko')
 	plt.plot(Contador, Flujo[0], 'go')
 	plt.plot(Contador, -Flujo[-1], 'ro')

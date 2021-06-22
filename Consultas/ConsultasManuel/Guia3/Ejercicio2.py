@@ -187,17 +187,25 @@ TensionesPromM = np.zeros((nodos,2))
 Tensiones = np.array(Tensiones)
 TensionesProm = np.zeros(nodos)
 
+#MDF-COMMENT no me queda claro esto.
 for i in range(elementos):
 	N = MatrizConectividad[i,:]
 	TensionesPromM[N[0],0] += Tensiones[i,0]
-	TensionesPromM[N[1],0] += Tensiones[i,0]
+	TensionesPromM[N[1],0] += Tensiones[i,0] #MDF-COMMENT aca no es 
 	TensionesPromM[N[2],0] += Tensiones[i,0]
 	TensionesPromM[N[0],1] += 1
 	TensionesPromM[N[1],1] += 1
 	TensionesPromM[N[2],1] += 1
 
+#MDF-COMMENT no me queda claro por  que lo de ariva te funcione.
+#MDF-COMMENT for node in range(NumeroNodos):
+#MDF-COMMENT     SIGMA_AVE_MAX[node] = SIGMA_MAX[ ETAGS[ (MC == node+1).any(axis=1) ] - ETAGS.min() ].mean()
+
+
+
 No2 = [i for i in range(nodos) if i not in NodosTrash]
 
+#MDF-COMMENT no entiendo que querés hacer acá ... 
 for i in No2:
 	TensionesProm[i] = TensionesPromM[i,0]/TensionesPromM[i,1]
 
