@@ -1,0 +1,18 @@
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usetikzlibrary{patterns,positioning}
+
+\begin{document}
+
+  \begin{tikzpicture}
+     \draw [draw,thick,pattern=north east lines] (-2.8,-2.8) rectangle (2.8,2.8);
+    \draw [draw,line width=2.5pt,anchor=base,fill=white] (-2.5,-2.5) rectangle (2.5,2.5);
+    \draw [<->, >=latex, line width = 2pt ]
+    (-5,0) node [anchor=south] { $y_j$ }  -- (-5,-2) -- (-3,-2) node [anchor=south] {$x_i$};
+    \node at (-3.1,0) {$T_A$};
+    \node at (0,-3.1) {$T_B$};
+    \node at (3.1,0)  {$T_C$};
+    \node at (0,3.1)  {$T_A$};
+  \end{tikzpicture}
+
+\end{document}
