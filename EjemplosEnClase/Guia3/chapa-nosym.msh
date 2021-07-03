@@ -1,0 +1,11 @@
+$MeshFormat
+2.2 0 8
+$EndMeshFormat
+$Nodes /complete:
+/numero de nodos
+/i_nodo  x y z
+$EndNodes
+$Elements
+/Numero de elementos
+/e_elemento tipo_emento(2=triangulo) 0(info_exta) n1 n2 n3
+$EndElements
