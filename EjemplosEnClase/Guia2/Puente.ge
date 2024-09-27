@@ -1,0 +1,22 @@
+GL
+2
+NODES
+4
+ 0.  0. 0  
+ 8.  4. 0
+ 16. 0. 0
+ 8.  0.  0
+ELEMENTS
+5 2
+2 0  1 10e-4  210e9
+2 3  0 10e-4  210e9
+2 3  1 20e-4  210e9
+2 1  2 10e-4  210e9
+2 2  3 10e-4  210e9
+VINS
+3
+0 1 1 0 0
+2 -1 1 0 0
+3 -1 -1 0 -20e3
+# node  vin=1: desplazamiento, vin = -1: fuerza
+# node  vinx viny valvinx valviny
